@@ -14,7 +14,7 @@ The use of Puppet and InSpec here is just an example. You can use other tools li
 
 Here's an example log output of the post step:
 
-
+<img src="https://raw.githubusercontent.com/shinesolutions/aem-helloworld-custom-image-provisioner/master/docs/post-step-log.png" width="800"/>
 
 ## Usage
 
@@ -24,6 +24,6 @@ To create artifact tar.gz file:
 
 The artifact will be written at `stage/aem-helloworld-custom-image-provisioner-<version>.tar.gz`
 
-Copy the tar.gz artifact file to Packer AEM:
+Copy the tar.gz artifact file to Packer AEM, please note that the file must be (re)named to `aem-custom-image-provisioner.tar.gz`:
 
-    cp stage/aem-helloworld-custom-image-provisioner-<version>.tar.gz <path/to/packer-aem>/stage/custom/
+    cp stage/aem-helloworld-custom-image-provisioner-<version>.tar.gz <path/to/packer-aem>/stage/custom/aem-custom-image-provisioner.tar.gz
