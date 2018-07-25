@@ -1,0 +1,36 @@
+version ?= 0.9.0
+
+ci: clean deps lint package
+
+deps:
+	gem install bundler
+	bundle install --binstubs
+
+clean:
+	rm -rf .bundle/ bin/ stage/ *.lock
+
+lint:
+	bundle exec puppet-lint \
+		--fail-on-warnings \
+		--no-140chars-check \
+		--no-autoloader_layout-check \
+		--no-documentation-check \
+		./modules/aem_helloworld/*.pp
+	bundle exec rubocop
+
+package: clean
+	mkdir -p stage
+	tar \
+	  -zcvf stage/aem-helloworld-custom-image-provisioner-$(version).tar.gz \
+    --exclude="*.DS_Store" \
+    --exclude="*bin*" \
+    --exclude="*stage*" \
+    --exclude="*.idea*" \
+    --exclude="*.git*" \
+    --exclude="*.bundle*" \
+    --exclude=".*.yml" \
+		--exclude="Gemfile" \
+		--exclude="Makefile" \
+	  .
+
+.PHONY: ci clean deps lint package
