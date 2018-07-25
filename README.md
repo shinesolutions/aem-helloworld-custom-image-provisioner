@@ -2,7 +2,7 @@
 
 # AEM Hello World Custom Image Provisioner
 
-This is an example AEM Hello World Custom Image Provisioner artifact that will be set up in [Packer AEM](https://github.com/shinesolutions/packer-aem/blob/master/docs/customisation-points.md#custom-image-provisioner) as one of the customisation points.
+This is an example AEM Hello World Custom Image Provisioner artifact that will be set up as one of [Packer AEM customisation points](https://github.com/shinesolutions/packer-aem/blob/master/docs/customisation-points.md#custom-image-provisioner).
 
 This artifact contains:
 * `pre-common.sh` shell script which will be executed before component image provisioning
