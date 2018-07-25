@@ -17,6 +17,7 @@ lint:
 		--no-documentation-check \
 		./modules/aem_helloworld/manifests/*.pp
 	bundle exec rubocop
+	shellcheck *.sh
 
 package: clean
 	mkdir -p stage
