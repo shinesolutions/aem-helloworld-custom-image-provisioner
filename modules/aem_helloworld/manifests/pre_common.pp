@@ -2,7 +2,7 @@ class aem_helloworld::pre_common (
 ) {
 
   notify { 'Display status message with component name':
-    message => "Executing Custom Image Provisioner pre-common step for component ${::component}",
+    message => "Executing Custom Image Provisioner pre-common step for component '${::component}' having run info '${::custom_stage_run_info}'",
   }
 
   file { '/opt/aem-helloworld-custom-image-provisioner/':
