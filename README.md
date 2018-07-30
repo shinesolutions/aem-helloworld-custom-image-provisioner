@@ -32,7 +32,7 @@ If you are using Puppet, the following global facts are available:
 
 | Fact | Description |
 |------|-------------|
-| `component` | The component name, useful for identifying which image is being provisioned. |
-| `custom_stage_run_info` | A user defined string for passing additional provisioning run information. User can inject this value by specifying environment variable `CUSTOM_STAGE_RUN_INFO` when executing Packer AEM build. |
+| `::component` | The component name, useful for identifying which image is being provisioned. |
+| `::custom_stage_run_info` | A user defined string for passing additional provisioning run information. User can inject this value by specifying environment variable `CUSTOM_STAGE_RUN_INFO` when executing Packer AEM build. |
 
 If you need more information from the provisioning process, you can tap into the Hiera data by adding `-hiera_config='/tmp/packer-puppet-masterless/hiera.yaml` flag to your Puppet apply call.
