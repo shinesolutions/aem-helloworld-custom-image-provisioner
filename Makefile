@@ -28,6 +28,7 @@ package: clean
     --exclude="*stage*" \
     --exclude="*.idea*" \
     --exclude="*.git*" \
+		--exclude="*.lock*" \
     --exclude="*.bundle*" \
     --exclude=".*.yml" \
 		--exclude="Gemfile" \
