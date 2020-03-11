@@ -2,17 +2,18 @@
 
 require 'aws-sdk-iam' # v3: require 'aws-sdk'
 require 'aws-sdk-route53' # v3: require 'aws-sdk'
+require "csv"
 
-Puppet::Functions.create_function(aws_assume_role.rb.erb) do
+Puppet::Functions.create_function(:aws_assume_role) do
 
-  dispatch :validate_apache_log_level do
+  dispatch :aws_assume_role do
     required_param 'Integer', :duration_time
     required_param 'String', :session_name
     required_param 'String', :region_name
     required_param 'Tuple', :assume_policy
   end
 
-  def validate_apache_log_level(duration_time, session_name, region_name, assume_policy)
+  def aws_assume_role(duration_time, session_name, region_name, assume_policy)
 
     puts "\nGathering credentials..."
     sts_client = Aws::STS::Client.new(region: region_name)
@@ -57,5 +58,10 @@ Puppet::Functions.create_function(aws_assume_role.rb.erb) do
     route53_resp = client.list_hosted_zones_by_name()
     puts route53_resp.to_h
 
+    CSV.open("/home/.assume_credential", "wb") do |csv|
+      csv << ["access_key_id", access_key_id]
+      csv << ["secret_access_key", secret_access_key]
+      csv << ["session_token", session_token]
+    end
   end
 end
