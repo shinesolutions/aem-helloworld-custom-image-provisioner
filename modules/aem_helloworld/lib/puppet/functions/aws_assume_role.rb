@@ -1,7 +1,16 @@
-#!/usr/bin/ruby
+# Generate an aws assume role and record it into a CSV file in which path is "/home/.assume_credential"
+# The input format should be:
+#       aws_assume_role(integer, String, String, Tuple)
+# For example:
+#       aws_assume_role(900, "session_name", "region_name", ["assume_policy"])
+#
+# Format of output credential CSV file likes:
+#       access_key_id, xxxxxxxxxxxx
+#       secret_access_key, xxxxxxxxxxx
+#       session_token, xxxxxxxxxxxxxxxxxxxx
+#
 
 require 'aws-sdk-iam' # v3: require 'aws-sdk'
-require 'aws-sdk-route53' # v3: require 'aws-sdk'
 require "csv"
 
 Puppet::Functions.create_function(:aws_assume_role) do
@@ -13,8 +22,11 @@ Puppet::Functions.create_function(:aws_assume_role) do
     required_param 'Tuple', :assume_policy
   end
 
+  # @param [Integer] duration_time :time of the assume session duration in seconds
+  # @param [String] session_name :name of the session
+  # @param [String] region_name :name of the aws region, for example: ap-southeast-2, us-east-1, etc.
+  # @param [Tuple] assume_policy :array of assume aws policy likes: ["s3:ListAllMyBuckets","route53:*"]
   def aws_assume_role(duration_time, session_name, region_name, assume_policy)
-
     puts "\nGathering credentials..."
     sts_client = Aws::STS::Client.new(region: region_name)
     resp = sts_client.get_caller_identity()
@@ -35,7 +47,7 @@ Puppet::Functions.create_function(:aws_assume_role) do
         ]
     }.to_json
 
-# Create a assume role.
+    # Create a assume role.
     puts "\nCreating assume role..."
     assume_resp = sts_client.assume_role({
                                              duration_seconds: duration_time,
@@ -48,16 +60,8 @@ Puppet::Functions.create_function(:aws_assume_role) do
     secret_access_key = assume_resp.credentials.secret_access_key
     session_token = assume_resp.credentials.session_token
 
-# Create a credential.
-    puts "\nCreating assume role credential..."
-    role_credentials = Aws::Credentials.new(access_key_id, secret_access_key, session_token)
-
-# Test a assume role with route53.
-    puts "\nTest assumed route53 authority..."
-    client = Aws::Route53::Client.new(region: region_name, credentials: role_credentials)
-    route53_resp = client.list_hosted_zones_by_name()
-    puts route53_resp.to_h
-
+    # Record its credentials into a CSV file.
+    puts "\nRecord assumed credentials..."
     CSV.open("/home/.assume_credential", "wb") do |csv|
       csv << ["access_key_id", access_key_id]
       csv << ["secret_access_key", secret_access_key]
