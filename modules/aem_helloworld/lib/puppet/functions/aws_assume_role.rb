@@ -62,7 +62,7 @@ Puppet::Functions.create_function(:aws_assume_role) do
 
     # Record its credentials into a CSV file.
     puts "\nRecord assumed credentials..."
-    CSV.open("/home/.assume_credential", "wb") do |csv|
+    CSV.open("/home/.assume_credentials", "wb") do |csv|
       csv << ["access_key_id", access_key_id]
       csv << ["secret_access_key", secret_access_key]
       csv << ["session_token", session_token]
