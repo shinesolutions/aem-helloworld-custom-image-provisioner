@@ -1,4 +1,4 @@
-[![Build Status](https://img.shields.io/travis/shinesolutions/aem-helloworld-custom-image-provisioner.svg)](http://travis-ci.org/shinesolutions/aem-helloworld-custom-image-provisioner)
+[![Build Status](https://github.com/shinesolutions/aem-helloworld-custom-image-provisioner/workflows/CI/badge.svg)](https://github.com/shinesolutions/aem-helloworld-custom-image-provisioner/actions?query=workflow%3ACI)
 [![Known Vulnerabilities](https://snyk.io/test/github/shinesolutions/aem-helloworld-custom-image-provisioner/badge.svg)](https://snyk.io/test/github/shinesolutions/aem-helloworld-custom-image-provisioner)
 
 # AEM Hello World Custom Image Provisioner
