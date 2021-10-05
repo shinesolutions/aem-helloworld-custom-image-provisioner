@@ -50,4 +50,4 @@ release-patch:
 
 release: release-minor
 
-.PHONY: ci clean deps lint package release release-major release-minor release-patch
+.PHONY: ci clean deps lint package publish release release-major release-minor release-patch
