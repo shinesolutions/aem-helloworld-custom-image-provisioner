@@ -3,7 +3,7 @@
 
 # AEM Hello World Custom Image Provisioner
 
-This is an example AEM Hello World Custom Image Provisioner artifact that will be set up as one of [Packer AEM customisation points](https://github.com/shinesolutions/packer-aem/blob/master/docs/customisation-points.md#custom-image-provisioner).
+This is an example AEM Hello World Custom Image Provisioner artifact that will be set up as one of [Packer AEM customisation points](https://github.com/shinesolutions/packer-aem/blob/main/docs/customisation-points.md#custom-image-provisioner).
 
 This artifact contains:
 * `pre-common.sh` shell script which will be executed before component image provisioning
@@ -15,7 +15,7 @@ Here's an example log output of the post step:
 
 <img src="https://raw.githubusercontent.com/shinesolutions/aem-helloworld-custom-image-provisioner/master/docs/post-step-log.png" width="800"/>
 
-The use of Puppet and InSpec here is just an example. You can use other tools like Ansible, or even plain shell script if need be. They can be installed either in the pre-common.sh/post-common.sh shell scripts or in [Packer AEM source image](https://github.com/shinesolutions/packer-aem/blob/master/docs/customisation-points.md#source-image).
+The use of Puppet and InSpec here is just an example. You can use other tools like Ansible, or even plain shell script if need be. They can be installed either in the pre-common.sh/post-common.sh shell scripts or in [Packer AEM source image](https://github.com/shinesolutions/packer-aem/blob/main/docs/customisation-points.md#source-image).
 
 ## Usage
 
