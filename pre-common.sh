@@ -33,4 +33,5 @@ translate_puppet_exit_code "$?"
 
 set -o errexit
 
+CHEF_LICENSE=accept-silent
 /opt/puppetlabs/puppet/bin/inspec exec "${BASE_DIR}"/test/pre_common.rb
