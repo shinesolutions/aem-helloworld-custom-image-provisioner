@@ -15,7 +15,7 @@ HOSTS:
       # installed
       - dnf install -y systemd tar gzip
       # yamllint disable-line rule:line-length
-      - dnf install -y https://yum.voxpupuli.org/openvox9-release-amazon-2023.noarch.rpm
+      - dnf install -y https://ftp.gwdg.de/pub/linux/openvox/yum/openvox9-release-amazon-2023.noarch.rpm
       - dnf install -y openvox-agent
       # Cinc InSpec at the version the AMIs provide
       # yamllint disable-line rule:line-length
