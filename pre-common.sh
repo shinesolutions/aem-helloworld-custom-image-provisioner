@@ -6,7 +6,7 @@ BASE_DIR=$(dirname "$0")
 echo "[aem-helloworld] Executing Custom Image Provisioner pre-common step..."
 
 # Translate puppet detailed exit codes to basic convention 0 to indicate success.
-# More info on Puppet --detailed-exitcodes https://puppet.com/docs/puppet/5.3/man/agent.html
+# More info on Puppet --detailed-exitcodes https://www.openvoxproject.org/docs/openvox/latest/man/apply.html
 translate_puppet_exit_code() {
 
   exit_code="$1"
@@ -33,4 +33,5 @@ translate_puppet_exit_code "$?"
 
 set -o errexit
 
-/opt/puppetlabs/puppet/bin/inspec exec "${BASE_DIR}"/test/pre_common.rb
+# The AMIs provide Cinc InSpec on the PATH instead of InSpec installed into the Puppet agent's Ruby, which OpenVox 9 replaced
+inspec exec "${BASE_DIR}"/test/pre_common.rb
