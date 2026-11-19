@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fall back to the GWDG mirror of yum.voxpupuli.org for the OpenVox 9 release package and repo in the acceptance nodesets, so an outage of yum.voxpupuli.org does not block CI
 - Upgrade aem-platform-buildenv to 6.7.0, which has RTK 4.4.0
 - Upgrade release-action to 2.2.0
+- Upgrade addressable from 2.9.0 to 2.9.2 and nokogiri from 1.19.4 to 1.19.7 in Gemfile.lock (addressable CVE-2026-126348 to CVE-2026-126354, nokogiri CVE-2026-126062 to CVE-2026-126064)
 
 ## 1.0.0 - 2026-10-27
 ### Added
